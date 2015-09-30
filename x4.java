@@ -53,7 +53,7 @@ boolean hit( float x1, float y1, float x2, float y2, float w, float h ) {
   boolean result;
 
   // +++++ STUB ALWAYS RETURNS TRUE!
-  if ( abs(x1-y1) < w && abs(y1-y2)<h ) {
+  if ( abs(x1-x2) < w && abs(y1-y2)<h ) {
     result=  true;
   } else {
     result=false;
