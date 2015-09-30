@@ -2,6 +2,7 @@
 
 int r,g,b;
 float button1X=100, button1Y=100, button1W=80, button1H=40;
+int counter=0;
 
 //// SETUP:  size only.  Also set colors.
 void setup() {
@@ -17,8 +18,10 @@ void reset() {
 
 //// NEXT:  button only.
 void draw() {
-  background( 100,200,250 );
+  background( r,g,b );
   showButton( button1X, button1Y, button1W, button1H );
+  fill(100,0,0);
+  text( "Click me!", button1X+button1W/4, button1Y+button1H*2/3 );
 }
 // Draw the button.
 void showButton( float x, float y, float w, float h ) {
@@ -29,10 +32,18 @@ void showButton( float x, float y, float w, float h ) {
 //// HANDLERS:  keys & click
 void keyPressed() {
   if (key == 'q') exit();
+  if (key == 'r') reset();
 }
 void mousePressed() {
   if ( hit( mouseX,mouseY, 100,100, 50,50 ) ) {
-    background(0);
+    counter=  counter+1;
+    if (counter % 2 > 0) {
+      r=  255;
+      g=  50;
+      b=  0;
+    } else {
+      reset();
+    }
   }
 }
 
@@ -40,7 +51,13 @@ void mousePressed() {
 // Return true if "near"
 boolean hit( float x1, float y1, float x2, float y2, float w, float h ) {
   boolean result;
+
   // +++++ STUB ALWAYS RETURNS TRUE!
-  result=  true;
+  if ( abs(x1-y1) < w && abs(y1-y2)<h ) {
+    result=  true;
+  } else {
+    result=false;
+  }
+
   return result;
 }
