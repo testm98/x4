@@ -27,19 +27,16 @@ void button( float x, float y, float w, float h ) {
   text(title, button1X-25, button1Y+5);
 }
 
-/*void mousePressed() {
-  if ( hit (mouseX, mouseY, 200, 200, 60, 60 ) ) {
-    counter= counter+1;
-    if (counter % 2 > 0) {
-      r= 160;
-      g= 200;
-      b= 80;
-    } else {
-      reset();
-    }
+void mousePressed() {
+  if ( hit(mouseX, mouseY, button1X, button1Y, button1W, button1H) ) {
+    background(160, 200, 80);
   }
 }
-*/
 
-
-
+boolean hit( float x, float y, float ax, float ay, float w, float h ) {
+  boolean result = false;
+  if ( abs (button1X) < w && abs (button1Y) < h ) {
+    result=true;
+  } 
+  return result;
+}
